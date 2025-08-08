@@ -35,6 +35,32 @@
   padding: 0 20px;
 }
 
+/* Section Title */
+.vision-section-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 50%, #667eea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.vision-section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 2px;
+}
+
 /* Hero Vision Statement */
 .vision-hero {
   text-align: center;
@@ -332,6 +358,10 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .vision-section-title {
+    font-size: 2.5rem;
+  }
+
   .vision-title {
     font-size: 2.5rem;
   }
@@ -374,6 +404,10 @@
 }
 
 @media (max-width: 480px) {
+  .vision-section-title {
+    font-size: 2rem;
+  }
+
   .vision-title {
     font-size: 2rem;
   }
@@ -391,19 +425,117 @@
   }
 }
 
-/* Animation Enhancements */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px);
+/* Enhanced Icon Animations */
+@keyframes iconPulse {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.1) rotate(5deg);
   }
   50% {
-    transform: translateY(-10px);
+    transform: scale(1.2) rotate(0deg);
+  }
+  75% {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
   }
 }
 
+@keyframes iconGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px rgba(79, 172, 254, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(79, 172, 254, 0.8))
+      drop-shadow(0 0 30px rgba(0, 242, 254, 0.6));
+  }
+}
+
+@keyframes iconBounce {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-15px);
+  }
+  60% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes iconSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes iconWave {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-8px) rotate(3deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(-3deg);
+  }
+}
+
+/* Apply different animations to different icons */
+.pillar-card:nth-child(1):hover .pillar-icon {
+  animation: iconPulse 1.5s ease-in-out infinite;
+}
+
+.pillar-card:nth-child(2):hover .pillar-icon {
+  animation: iconGlow 2s ease-in-out infinite;
+}
+
+.pillar-card:nth-child(3):hover .pillar-icon {
+  animation: iconBounce 1.2s ease-in-out infinite;
+}
+
+.pillar-card:nth-child(4):hover .pillar-icon {
+  animation: iconSpin 2s linear infinite;
+}
+
+.pillar-card:nth-child(5):hover .pillar-icon {
+  animation: iconWave 1.8s ease-in-out infinite;
+}
+
+.pillar-card:nth-child(6):hover .pillar-icon {
+  animation: iconPulse 1.3s ease-in-out infinite,
+    iconGlow 2.5s ease-in-out infinite;
+}
+
+/* Default icon state with subtle animation */
+.pillar-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 5px rgba(79, 172, 254, 0.2));
+}
+
 .pillar-card:hover .pillar-icon {
-  animation: float 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(79, 172, 254, 0.5));
 }
 
 /* Scroll-triggered animations */

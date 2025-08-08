@@ -10,88 +10,59 @@ const AboutSection = () => {
   const journeyData = [
     {
       id: 1,
-      phase: "Early Years",
-      year: "1985",
-      title: "The Beginning",
+      phase: "Early Years & Education",
+      year: "1952-1976",
+      title: "Foundation Years",
       description:
-        "Born in a small village, Zeliang showed early signs of leadership and community involvement that would shape his future path.",
-      icon: "🌟",
+        "Born on 21 February 1952 in Mbaupungwa village, Peren District, Zeliang completed his schooling at Don Bosco High School, Dibrugarh, and attended Kohima Arts College. His early leadership emerged through student organizations, serving as President of the Zeliangrong Students Union and General Secretary of various youth organizations.",
+      icon: "🎓",
       color: "#667eea",
-      highlights: ["Natural leadership", "Community spirit", "Strong values"],
+      highlights: [
+        "Born in Mbaupungwa village, Peren District",
+        "Education at Don Bosco High School, Dibrugarh",
+        "Student leadership in Zeliangrong organizations",
+        "Co-founded Peren College for education access",
+      ],
     },
     {
       id: 2,
-      phase: "Education",
-      year: "2000-2005",
-      title: "Academic Foundation",
+      phase: "Political Beginnings",
+      year: "1976-2003",
+      title: "Rise in Politics",
       description:
-        "Completed his primary and secondary education with distinction, actively participating in student leadership roles and extracurricular activities.",
-      icon: "📚",
-      color: "#764ba2",
+        "Entered formal politics as President of Peren District Youth Congress in 1976. After initial electoral setbacks, he was successfully elected in 1989 and served multiple terms, holding key ministerial positions including Information & Tourism, Relief & Rehabilitation, and Environment & Forests under Chief Minister S. C. Jamir.",
+      icon: "🏛️",
+      color: "#4facfe",
       highlights: [
-        "Academic excellence",
-        "Student leadership",
-        "Skill development",
+        "Started as Peren District Youth Congress President",
+        "Elected to Assembly in 1989, 1993, 1998, 2003",
+        "Ministerial roles in multiple departments",
+        "Formed Nagaland Congress in 2003",
       ],
     },
     {
       id: 3,
-      phase: "Higher Learning",
-      year: "2005-2010",
-      title: "University Years",
+      phase: "Leadership & Chief Ministership",
+      year: "2004-Present",
+      title: "State Leadership",
       description:
-        "Pursued higher studies in political science and public administration, laying the foundation for his future career in public service.",
-      icon: "🎓",
-      color: "#f093fb",
-      highlights: [
-        "Political science",
-        "Public administration",
-        "Research focus",
-      ],
-    },
-    {
-      id: 4,
-      phase: "Community Service",
-      year: "2010-2015",
-      title: "Grassroots Experience",
-      description:
-        "Began his journey in community service, working with local organizations and understanding the real issues faced by people.",
-      icon: "🤝",
-      color: "#4facfe",
-      highlights: ["Grassroots work", "Community development", "Social impact"],
-    },
-    {
-      id: 5,
-      phase: "Political Career",
-      year: "2015-Present",
-      title: "Leadership Journey",
-      description:
-        "Officially entered politics, joining the youth wing of his party and starting his remarkable political career that continues to evolve.",
-      icon: "🏛️",
+        "Served as Rajya Sabha MP from 2004-2008, then returned to state politics winning from Peren constituency. Rose to become Chief Minister twice (2014-2017 and 2017-2018), currently serving as Deputy Chief Minister under Neiphiu Rio, demonstrating enduring commitment to Nagaland's development.",
+      icon: "⭐",
       color: "#43e97b",
       highlights: [
-        "Youth leadership",
-        "Political mobilization",
-        "Public service",
+        "Rajya Sabha MP (2004-2008)",
+        "Chief Minister twice (2014-2017, 2017-2018)",
+        "Current Deputy Chief Minister",
+        "Multiple re-elections from Peren constituency",
       ],
     },
   ];
 
-  const fullBio = `Zeliang is a dedicated public servant and political leader who has devoted his life to serving the community. Born in a humble background, he understood the challenges faced by ordinary people from an early age. His journey from a small village to becoming a prominent political figure is a testament to his determination and commitment to public service.
+  const fullBio = `Taditui Rangkau Zeliang (born 21 February 1952)[1] is an Indian politician who is currently serving as the Deputy Chief Minister of Nagaland under Neiphiu Rio. He has served twice as the Chief Minister of Nagaland, from May 2014 to February 2017 and from July 2017 to March 2018. A leader of the Naga People's Front, T. R. Zeliang previously served as a Member of Parliament, representing Nagaland in the Rajya Sabha, the upper house of the Indian Parliament. He served as the Chairman of United Democratic Alliance (Nagaland) and was former leader of the NPF Legislature Party and former Leader of Opposition in Nagaland Legislative Assembly.He represents the Peren Assembly constituency in Nagaland Legislative Assembly since 2008.[3]`;
 
-Throughout his career, Zeliang has consistently worked towards improving the lives of his constituents, focusing on education, healthcare, and infrastructure development. His approach to politics is characterized by transparency, accountability, and a deep understanding of local issues.
+  const shortBio = `Taditui Rangkau Zeliang (born 21 February 1952)[1] is an Indian politician who is currently serving as the Deputy Chief Minister of Nagaland under Neiphiu Rio. He has served twice as the Chief Minister of Nagaland, from May 2014 to February 2017 and from July 2017 to March 2018. A leader of the Naga People's Front, T. R. Zeliang previously served as a Member of Parliament, representing Nagaland in the Rajya Sabha, the upper house of the Indian Parliament.`;
 
-As a leader, he believes in inclusive development and has always prioritized the welfare of the most vulnerable sections of society. His vision for the future is centered around sustainable development, technological advancement, and social justice.`;
-
-  const shortBio = `Zeliang is a dedicated public servant and political leader who has devoted his life to serving the community. Born in a humble background, he understood the challenges faced by ordinary people from an early age.`;
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActivePhase((prev) => (prev + 1) % journeyData.length);
-    }, 4000);
-
-    return () => clearInterval(interval);
-  }, []);
+  // Removed automatic transition - now only manual navigation via buttons
 
   return (
     <div className="about-section">
@@ -156,7 +127,9 @@ As a leader, he believes in inclusive development and has always prioritized the
               <motion.button
                 key={item.id}
                 className={`journey-nav-item ${
-                  activePhase === index ? "active" : ""
+                  activePhase === index && index < journeyData.length
+                    ? "active"
+                    : ""
                 }`}
                 onClick={() => setActivePhase(index)}
                 whileHover={{ scale: 1.05 }}
@@ -180,7 +153,9 @@ As a leader, he believes in inclusive development and has always prioritized the
               <motion.div
                 key={item.id}
                 className={`journey-card ${
-                  activePhase === index ? "active" : ""
+                  activePhase === index && index < journeyData.length
+                    ? "active"
+                    : ""
                 }`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{
@@ -188,7 +163,7 @@ As a leader, he believes in inclusive development and has always prioritized the
                   scale: activePhase === index ? 1 : 0.8,
                   display: activePhase === index ? "block" : "none",
                 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
               >
                 <div className="journey-card-header">
                   <div
@@ -214,7 +189,7 @@ As a leader, he believes in inclusive development and has always prioritized the
                         className="highlight-item"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: 0.1 + idx * 0.05 }}
+                        transition={{ duration: 0.2, delay: 0.05 + idx * 0.03 }}
                         style={{ borderColor: item.color }}
                       >
                         <span
@@ -237,13 +212,18 @@ As a leader, he believes in inclusive development and has always prioritized the
                 className="progress-fill"
                 initial={{ width: 0 }}
                 animate={{
-                  width: `${((activePhase + 1) / journeyData.length) * 100}%`,
+                  width: `${
+                    (Math.min(activePhase + 1, journeyData.length) /
+                      journeyData.length) *
+                    100
+                  }%`,
                 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
               />
             </div>
             <div className="progress-text">
-              {activePhase + 1} of {journeyData.length}
+              {Math.min(activePhase + 1, journeyData.length)} of{" "}
+              {journeyData.length}
             </div>
           </div>
         </div>

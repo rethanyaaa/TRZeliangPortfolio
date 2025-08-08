@@ -8,61 +8,62 @@ const Achievements = () => {
   const parallaxRef = useRef(null);
 
   const achievementsData = [
-    {
-      id: 1,
-      title: "Infrastructure Development",
-      description:
-        "Transformed Nagaland's infrastructure with modern roads, bridges, and public facilities",
-      icon: "🏗️",
-      stats: "500+ km roads",
-      color: "#667eea",
-    },
-    {
-      id: 2,
-      title: "Education Reforms",
-      description:
-        "Implemented comprehensive education reforms improving literacy rates and school infrastructure",
-      icon: "📚",
-      stats: "95% literacy rate",
-      color: "#764ba2",
-    },
-    {
-      id: 3,
-      title: "Healthcare Enhancement",
-      description:
-        "Upgraded healthcare facilities and implemented universal health coverage programs",
-      icon: "🏥",
-      stats: "100+ clinics",
-      color: "#f093fb",
-    },
-    {
-      id: 4,
-      title: "Digital Transformation",
-      description:
-        "Led digital initiatives bringing government services online and improving connectivity",
-      icon: "💻",
-      stats: "80% digitization",
-      color: "#4facfe",
-    },
-    {
-      id: 5,
-      title: "Rural Development",
-      description:
-        "Focused on rural upliftment with sustainable development projects and skill training",
-      icon: "🌾",
-      stats: "200+ villages",
-      color: "#43e97b",
-    },
-    {
-      id: 6,
-      title: "Women Empowerment",
-      description:
-        "Launched programs for women's education, employment, and leadership development",
-      icon: "👩‍💼",
-      stats: "50K+ women",
-      color: "#fa709a",
-    },
-  ];
+  {
+    id: 1,
+    title: "Infrastructure Development",
+    description:
+      "Pushed major road connectivity projects including Foothill Road, National Highway upgrades, and rural link roads.",
+    icon: "🏗️",
+    stats: "Multiple state & national projects",
+    color: "#667eea",
+  },
+  {
+    id: 2,
+    title: "Education Initiatives",
+    description:
+      "Expanded access to higher education, vocational training centres, and improved rural school facilities.",
+    icon: "📚",
+    stats: "New colleges & skill centres",
+    color: "#764ba2",
+  },
+  {
+    id: 3,
+    title: "Healthcare Improvement",
+    description:
+      "Strengthened district hospitals, promoted telemedicine, and initiated preventive health campaigns.",
+    icon: "🏥",
+    stats: "Upgraded facilities in all districts",
+    color: "#f093fb",
+  },
+  {
+    id: 4,
+    title: "Digital & Governance Reforms",
+    description:
+      "Introduced e-governance platforms, digital connectivity projects, and online public services.",
+    icon: "💻",
+    stats: "Key govt services online",
+    color: "#4facfe",
+  },
+  {
+    id: 5,
+    title: "Rural Development",
+    description:
+      "Implemented livelihood programs, sustainable agriculture projects, and rural electrification.",
+    icon: "🌾",
+    stats: "Impact in 200+ villages",
+    color: "#43e97b",
+  },
+  {
+    id: 6,
+    title: "Women & Youth Empowerment",
+    description:
+      "Launched skill programs, micro-financing for women entrepreneurs, and youth leadership initiatives.",
+    icon: "👩‍💼",
+    stats: "Thousands benefitted",
+    color: "#fa709a",
+  },
+];
+
 
   const testimonials = [
     {
@@ -206,56 +207,7 @@ const Achievements = () => {
           ))}
         </div>
 
-        {/* Testimonials Section */}
-        <div className="testimonials-section">
-          <h3>What People Say</h3>
-          <div className="testimonials-container">
-            <div className="testimonials-carousel">
-              {testimonials.map((testimonial, index) => (
-                <div
-                  key={testimonial.id}
-                  className={`testimonial-slide ${
-                    index === currentTestimonial ? "active" : ""
-                  }`}
-                >
-                  <div className="testimonial-content">
-                    <div className="testimonial-avatar">
-                      {testimonial.avatar}
-                    </div>
-                    <blockquote className="testimonial-quote">
-                      "{testimonial.quote}"
-                    </blockquote>
-                    <div className="testimonial-author">
-                      <h4>{testimonial.name}</h4>
-                      <p>{testimonial.position}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Carousel Controls */}
-            <div className="carousel-controls">
-              <button className="carousel-btn prev" onClick={prevTestimonial}>
-                ‹
-              </button>
-              <div className="carousel-indicators">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    className={`indicator ${
-                      index === currentTestimonial ? "active" : ""
-                    }`}
-                    onClick={() => setCurrentTestimonial(index)}
-                  ></button>
-                ))}
-              </div>
-              <button className="carousel-btn next" onClick={nextTestimonial}>
-                ›
-              </button>
-            </div>
-          </div>
-        </div>
+        
 
         {/* Achievement Summary */}
         <div className="achievement-summary">

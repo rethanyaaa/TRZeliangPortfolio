@@ -91,6 +91,12 @@ const HeroSection = () => {
                 ease: "easeInOut",
               },
             }}
+            onClick={() => {
+              const aboutSection = document.getElementById("about");
+              if (aboutSection) {
+                aboutSection.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
           >
             Explore Journey
           </motion.button>

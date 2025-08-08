@@ -17,51 +17,62 @@ const VisionSection = () => {
   });
 
   const visionPillars = [
-    {
-      id: 1,
-      title: "Education & Youth Development",
-      icon: "📚",
-      description:
-        "Empowering the next generation through quality education and skill development programs.",
-      details:
-        "Focus on digital literacy, vocational training, and higher education accessibility.",
-    },
-    {
-      id: 2,
-      title: "Infrastructure & Connectivity",
-      icon: "🌉",
-      description:
-        "Building modern infrastructure to connect communities and drive economic growth.",
-      details:
-        "Road networks, digital connectivity, and sustainable urban development.",
-    },
-    {
-      id: 3,
-      title: "Economic Growth & Employment",
-      icon: "📈",
-      description:
-        "Creating sustainable economic opportunities and job creation across sectors.",
-      details:
-        "Tourism development, agriculture modernization, and small business support.",
-    },
-    {
-      id: 4,
-      title: "Cultural Preservation",
-      icon: "🎨",
-      description:
-        "Preserving and promoting Naga heritage while embracing cultural evolution.",
-      details: "Traditional arts, festivals, and cultural education programs.",
-    },
-    {
-      id: 5,
-      title: "Healthcare Advancements",
-      icon: "🏥",
-      description:
-        "Ensuring accessible and quality healthcare for all communities.",
-      details:
-        "Modern medical facilities, preventive care, and health awareness programs.",
-    },
-  ];
+  {
+    id: 1,
+    title: "Education & Youth Development",
+    icon: "📚",
+    description:
+      "Empowering the next generation through quality education, skill development, and cultural awareness.",
+    details:
+      "Expand higher education access in rural areas, strengthen vocational and technical training institutes, promote digital literacy, and encourage youth leadership through sports and cultural activities.",
+  },
+  {
+    id: 2,
+    title: "Infrastructure & Connectivity",
+    icon: "🌉",
+    description:
+      "Modernizing transport and communication infrastructure to connect communities and boost the economy.",
+    details:
+      "Accelerate completion of National Highway projects, develop Foothill Road, improve rural roads, expand internet connectivity, and promote sustainable town planning.",
+  },
+  {
+    id: 3,
+    title: "Economic Growth & Employment",
+    icon: "📈",
+    description:
+      "Creating resilient economic opportunities rooted in local strengths and resources.",
+    details:
+      "Promote tourism and eco-tourism, modernize agriculture and horticulture, support small and medium enterprises, and encourage youth entrepreneurship in emerging sectors.",
+  },
+  {
+    id: 4,
+    title: "Cultural Preservation & Identity",
+    icon: "🎨",
+    description:
+      "Safeguarding Naga heritage while adapting to modern challenges.",
+    details:
+      "Strengthen traditional arts and crafts markets, document indigenous languages, celebrate cultural festivals, and integrate heritage into school curricula.",
+  },
+  {
+    id: 5,
+    title: "Healthcare & Social Welfare",
+    icon: "🏥",
+    description:
+      "Ensuring accessible and quality healthcare for all, with a focus on rural communities.",
+    details:
+      "Upgrade district hospitals, expand preventive healthcare programs, improve telemedicine access, and implement nutrition and welfare schemes for vulnerable groups.",
+  },
+  {
+    id: 6,
+    title: "Environmental Sustainability",
+    icon: "🌿",
+    description:
+      "Protecting Nagaland's biodiversity and promoting responsible development.",
+    details:
+      "Community-led conservation projects, reforestation programs, renewable energy promotion, and sustainable farming practices.",
+  },
+];
+
 
   const timelineData = [
     {
@@ -147,18 +158,28 @@ const VisionSection = () => {
       </div>
 
       <div className="vision-container">
+        {/* Section Title */}
+        <motion.h2
+          className="vision-section-title"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+        >
+          VISION
+        </motion.h2>
+
         {/* Hero Vision Statement */}
         <motion.div
           className="vision-hero"
           initial={{ opacity: 0, y: 50 }}
           animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h1 className="vision-title">
             <motion.span
               initial={{ opacity: 0 }}
               animate={isVisible ? { opacity: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
               Empowering Nagaland Through
             </motion.span>
@@ -167,7 +188,7 @@ const VisionSection = () => {
               className="highlight-text"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isVisible ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
             >
               Sustainable Growth & Unity
             </motion.span>
@@ -221,7 +242,6 @@ const VisionSection = () => {
         </motion.div>
 
         {/* Interactive Timeline */}
-      
 
         {/* Quote Overlay */}
         <motion.div
