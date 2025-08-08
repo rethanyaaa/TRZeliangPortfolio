@@ -1,51 +1,79 @@
 import React, { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import "./AboutSection.css";
 
 const AboutSection = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [visibleItems, setVisibleItems] = useState([]);
-  const timelineRef = useRef(null);
+  const [activePhase, setActivePhase] = useState(0);
+  const journeyRef = useRef(null);
 
-  const timelineData = [
+  const journeyData = [
     {
       id: 1,
+      phase: "Early Years",
       year: "1985",
-      title: "Early Life",
+      title: "The Beginning",
       description:
-        "Born in a small village, Zeliang showed early signs of leadership and community involvement.",
-      icon: "👶",
+        "Born in a small village, Zeliang showed early signs of leadership and community involvement that would shape his future path.",
+      icon: "🌟",
+      color: "#667eea",
+      highlights: ["Natural leadership", "Community spirit", "Strong values"],
     },
     {
       id: 2,
+      phase: "Education",
       year: "2000-2005",
-      title: "Education",
+      title: "Academic Foundation",
       description:
-        "Completed his primary and secondary education with distinction, actively participating in student leadership roles.",
-      icon: "🎓",
+        "Completed his primary and secondary education with distinction, actively participating in student leadership roles and extracurricular activities.",
+      icon: "📚",
+      color: "#764ba2",
+      highlights: [
+        "Academic excellence",
+        "Student leadership",
+        "Skill development",
+      ],
     },
     {
       id: 3,
+      phase: "Higher Learning",
       year: "2005-2010",
-      title: "Higher Education",
+      title: "University Years",
       description:
-        "Pursued higher studies in political science and public administration, laying the foundation for his future career.",
-      icon: "📚",
+        "Pursued higher studies in political science and public administration, laying the foundation for his future career in public service.",
+      icon: "🎓",
+      color: "#f093fb",
+      highlights: [
+        "Political science",
+        "Public administration",
+        "Research focus",
+      ],
     },
     {
       id: 4,
+      phase: "Community Service",
       year: "2010-2015",
-      title: "Community Service",
+      title: "Grassroots Experience",
       description:
-        "Began his journey in community service, working with local organizations and understanding grassroots issues.",
+        "Began his journey in community service, working with local organizations and understanding the real issues faced by people.",
       icon: "🤝",
+      color: "#4facfe",
+      highlights: ["Grassroots work", "Community development", "Social impact"],
     },
     {
       id: 5,
-      year: "2015",
-      title: "Political Entry",
+      phase: "Political Career",
+      year: "2015-Present",
+      title: "Leadership Journey",
       description:
-        "Officially entered politics, joining the youth wing of his party and starting his political career.",
+        "Officially entered politics, joining the youth wing of his party and starting his remarkable political career that continues to evolve.",
       icon: "🏛️",
+      color: "#43e97b",
+      highlights: [
+        "Youth leadership",
+        "Political mobilization",
+        "Public service",
+      ],
     },
   ];
 
@@ -58,23 +86,11 @@ As a leader, he believes in inclusive development and has always prioritized the
   const shortBio = `Zeliang is a dedicated public servant and political leader who has devoted his life to serving the community. Born in a humble background, he understood the challenges faced by ordinary people from an early age.`;
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = parseInt(entry.target.dataset.id);
-            setVisibleItems((prev) => [...new Set([...prev, id])]);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
+    const interval = setInterval(() => {
+      setActivePhase((prev) => (prev + 1) % journeyData.length);
+    }, 4000);
 
-    const timelineItems =
-      timelineRef.current?.querySelectorAll(".timeline-item");
-    timelineItems?.forEach((item) => observer.observe(item));
-
-    return () => observer.disconnect();
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -113,28 +129,122 @@ As a leader, he believes in inclusive development and has always prioritized the
           </div>
         </div>
 
-        {/* Timeline Section */}
-        <div className="timeline-section">
-          <h3>Journey Through Time</h3>
-          <div className="timeline" ref={timelineRef}>
-            {timelineData.map((item) => (
-              <div
+        {/* Journey Through Time - New Design */}
+        <div className="journey-section" ref={journeyRef}>
+          <motion.h3
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className="journey-title"
+          >
+            Journey Through Time
+          </motion.h3>
+
+          <motion.p
+            className="journey-subtitle"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+          >
+            A remarkable evolution from humble beginnings to leadership
+            excellence
+          </motion.p>
+
+          {/* Journey Navigation */}
+          <div className="journey-navigation">
+            {journeyData.map((item, index) => (
+              <motion.button
                 key={item.id}
-                className={`timeline-item ${
-                  visibleItems.includes(item.id) ? "visible" : ""
+                className={`journey-nav-item ${
+                  activePhase === index ? "active" : ""
                 }`}
-                data-id={item.id}
+                onClick={() => setActivePhase(index)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                style={{
+                  borderColor:
+                    activePhase === index ? item.color : "transparent",
+                  backgroundColor:
+                    activePhase === index ? `${item.color}20` : "transparent",
+                }}
               >
-                <div className="timeline-icon">
-                  <span>{item.icon}</span>
-                </div>
-                <div className="timeline-content">
-                  <div className="timeline-year">{item.year}</div>
-                  <h4 className="timeline-title">{item.title}</h4>
-                  <p className="timeline-description">{item.description}</p>
-                </div>
-              </div>
+                <span className="nav-icon">{item.icon}</span>
+                <span className="nav-phase">{item.phase}</span>
+              </motion.button>
             ))}
+          </div>
+
+          {/* Journey Content */}
+          <div className="journey-content">
+            {journeyData.map((item, index) => (
+              <motion.div
+                key={item.id}
+                className={`journey-card ${
+                  activePhase === index ? "active" : ""
+                }`}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{
+                  opacity: activePhase === index ? 1 : 0,
+                  scale: activePhase === index ? 1 : 0.8,
+                  display: activePhase === index ? "block" : "none",
+                }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <div className="journey-card-header">
+                  <div
+                    className="journey-icon"
+                    style={{ backgroundColor: item.color }}
+                  >
+                    <span>{item.icon}</span>
+                  </div>
+                  <div className="journey-info">
+                    <h4 className="journey-card-title">{item.title}</h4>
+                    <div className="journey-year">{item.year}</div>
+                  </div>
+                </div>
+
+                <p className="journey-description">{item.description}</p>
+
+                <div className="journey-highlights">
+                  <h5>Key Highlights:</h5>
+                  <div className="highlights-grid">
+                    {item.highlights.map((highlight, idx) => (
+                      <motion.div
+                        key={idx}
+                        className="highlight-item"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: 0.1 + idx * 0.05 }}
+                        style={{ borderColor: item.color }}
+                      >
+                        <span
+                          className="highlight-bullet"
+                          style={{ backgroundColor: item.color }}
+                        ></span>
+                        {highlight}
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Journey Progress */}
+          <div className="journey-progress">
+            <div className="progress-bar">
+              <motion.div
+                className="progress-fill"
+                initial={{ width: 0 }}
+                animate={{
+                  width: `${((activePhase + 1) / journeyData.length) * 100}%`,
+                }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+              />
+            </div>
+            <div className="progress-text">
+              {activePhase + 1} of {journeyData.length}
+            </div>
           </div>
         </div>
       </div>
