@@ -1,0 +1,451 @@
+.political-career {
+  position: relative;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f0f23 100%);
+  padding: 80px 0;
+  overflow: hidden;
+}
+
+.political-career::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 80% 80%,
+      rgba(79, 172, 254, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(0, 242, 254, 0.1) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+}
+
+.career-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Section Title */
+.career-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 50%, #667eea 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.career-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 2px;
+}
+
+/* Statistics Section */
+.stats-section {
+  margin-bottom: 80px;
+}
+
+.stats-section h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.stats-section h3::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 2px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.stat-card:hover::before {
+  left: 100%;
+}
+
+.stat-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(79, 172, 254, 0.5);
+  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+  transform: translateY(-10px);
+}
+
+.stat-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.stat-number {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #4facfe;
+  margin-bottom: 10px;
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+/* Career Cards Section */
+.career-cards-section {
+  margin-bottom: 80px;
+}
+
+.career-cards-section h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.career-cards-section h3::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 2px;
+}
+
+.career-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.career-card {
+  perspective: 1000px;
+  height: 400px;
+  cursor: pointer;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.career-card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.card-front:hover,
+.card-back:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(79, 172, 254, 0.5);
+  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.card-subtitle {
+  color: #4facfe;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.card-year {
+  color: #b0b0b0;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.card-description {
+  color: #b0b0b0;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.achievements-list {
+  text-align: left;
+  width: 100%;
+}
+
+.achievements-list h5 {
+  color: #4facfe;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.achievements-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.achievements-list li {
+  color: #b0b0b0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.achievements-list li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: #4facfe;
+  font-size: 0.8rem;
+}
+
+.flip-hint {
+  color: #4facfe;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-top: auto;
+  opacity: 0.8;
+}
+
+/* Career Summary */
+.career-summary {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 50px;
+  transition: all 0.3s ease;
+}
+
+.career-summary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(79, 172, 254, 0.5);
+  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+}
+
+.career-summary h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #4facfe;
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.career-summary h3::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(45deg, #4facfe 0%, #00f2fe 100%);
+  border-radius: 2px;
+}
+
+.summary-content p {
+  color: #b0b0b0;
+  line-height: 1.8;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .career-title {
+    font-size: 2.5rem;
+  }
+
+  .stats-section h3,
+  .career-cards-section h3,
+  .career-summary h3 {
+    font-size: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .career-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stat-card {
+    padding: 30px 20px;
+  }
+
+  .career-summary {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .career-title {
+    font-size: 2rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
+  }
+
+  .career-summary {
+    padding: 20px;
+  }
+}
+
+/* Animation Enhancements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-card,
+.career-card {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.stat-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.stat-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.stat-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.stat-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+.career-card:nth-child(1) {
+  animation-delay: 0.5s;
+}
+.career-card:nth-child(2) {
+  animation-delay: 0.6s;
+}
+.career-card:nth-child(3) {
+  animation-delay: 0.7s;
+}
+.career-card:nth-child(4) {
+  animation-delay: 0.8s;
+}
