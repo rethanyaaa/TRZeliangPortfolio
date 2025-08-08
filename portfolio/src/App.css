@@ -116,10 +116,17 @@ main {
 #political-career,
 #achievements,
 #vision,
-#gallery,
 #contact {
   padding: 0;
   background: none;
+}
+
+#gallery {
+  padding: 0;
+  background: none;
+  display: block;
+  align-items: stretch;
+  justify-content: flex-start;
 }
 
 .section-content {

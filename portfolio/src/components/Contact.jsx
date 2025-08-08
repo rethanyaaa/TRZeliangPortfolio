@@ -321,30 +321,7 @@ const Contact = () => {
         </div>
 
         {/* Interactive Map */}
-        <div className="map-container">
-          <h3 className="map-title">Visit Nagaland</h3>
-          <div className="map-wrapper">
-            <div className="map-placeholder">
-              <div className="map-content">
-                <div className="map-marker">
-                  <div className="marker-pulse"></div>
-                  <div className="marker-dot"></div>
-                </div>
-                <div className="map-info">
-                  <h4>Kohima, Nagaland</h4>
-                  <p>
-                    The capital city of Nagaland, known for its rich culture and
-                    heritage
-                  </p>
-                </div>
-              </div>
-              <div className="map-overlay">
-                <p>Interactive map will be embedded here</p>
-                <small>Google Maps or OpenStreetMap integration</small>
-              </div>
-            </div>
-          </div>
-        </div>
+       
       </div>
     </div>
   );
